@@ -2,6 +2,7 @@
 
 // An array of drops
 static int size = 50;
+static int numpics = 10;
 
 Drop[] drops = new Drop[size];
 
@@ -21,7 +22,7 @@ void setup() {
   //}
   
   for(int d = 0; d < size; d++) {
-    drops[d] = new Drop(this, (d % 5));
+    drops[d] = new Drop(this, (d % numpics));
   }
   
 } //<>//

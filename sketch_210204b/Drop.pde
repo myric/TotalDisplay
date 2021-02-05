@@ -42,11 +42,11 @@ class Drop {
   }
   
   Drop(PApplet parent, int pic) {
-    r = 32;                 // All raindrops are the same size
+    r = 64;                 // All raindrops are the same size
     x = random(width);     // Start with a random x location
     //y = -r*4;              // Start a little above the window
-    y = -r;
-    speed = random(1, 5);   // Pick a random speed
+    y = -r/2;
+    speed = random(2, 7);   // Pick a random speed (made faster)
     c = color(255, 255, 255); // Color
     
     base = "../giph";

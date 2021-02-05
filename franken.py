@@ -35,7 +35,7 @@ ending = ".gif"
 #     data = json.loads(response.read())
 # print(json.dumps(data, sort_keys=True, indent=4))
 
-for i in range(5):
+for i in range(10):
 	with urllib.request.urlopen("".join((url, params))) as response:
 	    data = json.loads(response.read())
 
