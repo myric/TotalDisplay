@@ -3,7 +3,7 @@
 // An array of drops
 Drop[] drops = new Drop[25];
 Drop drop1;
-//Drop drop2;
+Drop drop2;
 
 // New variable to keep track of total number of drops we want to use!
 int totalDrops;
@@ -12,7 +12,7 @@ void setup() {
   size(480, 270);
   totalDrops = 0;
   drop1 = new Drop(this);
-  //drop2 = new Drop();
+  drop2 = new Drop();
 }
 
 void draw() {
@@ -21,8 +21,8 @@ void draw() {
   drop1.move();
   drop1.display();
 
-  //drop2.move();
-  //drop2.display();
+  drop2.move();
+  drop2.display();
 
   println(totalDrops); //<>//
 
