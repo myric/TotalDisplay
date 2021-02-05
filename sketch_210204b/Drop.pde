@@ -52,6 +52,12 @@ class Drop {
       return false;
     }
   }
+  
+  void reset() {
+    x = random(width);
+    y = -r;
+    speed = random(1, 5);
+  }
 
   // Display the raindrop
   void display() {
