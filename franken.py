@@ -39,7 +39,7 @@ for i in range(5):
 	with urllib.request.urlopen("".join((url, params))) as response:
 	    data = json.loads(response.read())
 
-	newurl = data["data"]["images"]["fixed_height"]["url"]
+	newurl = data["data"]["images"]["fixed_height_downsampled"]["url"]
 
 	with urllib.request.urlopen(newurl) as response:
 		theGif = response.read()

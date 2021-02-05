@@ -12,6 +12,8 @@ class Drop {
   float speed; // Speed of raindrop
   color c;
   float r;     // Radius of raindrop
+  
+  String base, ending;
 
   Drop() {
     r = 32;                 // All raindrops are the same size
@@ -32,7 +34,24 @@ class Drop {
     speed = random(1, 5);   // Pick a random speed
     c = color(255, 255, 255); // Color
     
-    giphy = new Gif(parent, "../200.gif");
+    base = "../200";
+    ending = ".gif";
+    giphy = new Gif(parent, base+ending);
+    giphy.play();
+    option = 1;
+  }
+  
+  Drop(PApplet parent, int pic) {
+    r = 32;                 // All raindrops are the same size
+    x = random(width);     // Start with a random x location
+    //y = -r*4;              // Start a little above the window
+    y = -r;
+    speed = random(1, 5);   // Pick a random speed
+    c = color(255, 255, 255); // Color
+    
+    base = "../giph";
+    ending = ".gif";
+    giphy = new Gif(parent, base+pic+ending);
     giphy.play();
     option = 1;
   }
