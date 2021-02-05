@@ -2,8 +2,8 @@
 
 // An array of drops
 Drop[] drops = new Drop[10];
-Drop drop1;
-Drop drop2;
+//Drop drop1;
+//Drop drop2;
 
 // New variable to keep track of total number of drops we want to use!
 //int totalDrops;
@@ -20,18 +20,18 @@ void setup() {
     }
   }
   
-  drop1 = new Drop(this);
-  drop2 = new Drop();
+  //drop1 = new Drop(this);
+  //drop2 = new Drop();
 }
 
 void draw() { //<>//
   background(255);
 
-  drop1.move();
-  drop1.display();
+  //drop1.move();
+  //drop1.display();
 
-  drop2.move();
-  drop2.display();
+  //drop2.move();
+  //drop2.display();
 
   // If we hit the end of the array
   //if (totalDrops >= drops.length) {

@@ -26,20 +26,25 @@ params = urllib.parse.urlencode({
     "rating": "g"
 })
 
-print("".join((url, params)))
+base = "giph"
+ending = ".gif"
 
-with urllib.request.urlopen("".join((url, params))) as response:
-    data = json.loads(response.read())
+# print("".join((url, params)))
 
 # with urllib.request.urlopen(url.join(params)) as response:
 #     data = json.loads(response.read())
 # print(json.dumps(data, sort_keys=True, indent=4))
 
-newurl = data["data"]["images"]["fixed_height"]["url"]
+for i in range(5):
+	with urllib.request.urlopen("".join((url, params))) as response:
+	    data = json.loads(response.read())
 
-with urllib.request.urlopen(newurl) as response:
-	theGif = response.read()
+	newurl = data["data"]["images"]["fixed_height"]["url"]
 
-fileWriter = open('200.gif','wb')
-fileWriter.write(theGif)
-fileWriter.close()
+	with urllib.request.urlopen(newurl) as response:
+		theGif = response.read()
+
+	f = base + str(i) + ending
+	fileWriter = open(f,'wb')
+	fileWriter.write(theGif)
+	fileWriter.close()
