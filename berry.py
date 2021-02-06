@@ -2,7 +2,8 @@
 
 # Thank you NeoPixel example code for the core here.
 
-import time
+import time as timmy
+from time import time
 import board
 import neopixel
 
@@ -50,13 +51,19 @@ def rainbow_cycle(wait):
             pixel_index = (i * 256 // num_pixels) + j
             pixels[i] = wheel(pixel_index & 255)
         pixels.show()
-        time.sleep(wait)
+        # sleep(wait)
+        timmy.sleep(wait)
 
 def main():
-	while True:
+	end = time() + 300
+	while time() < end:
 		rainbow_cycle(0.001)
-		time.sleep(0.001)
+		# sleep(0.001)
+		timmy.sleep(0.001)
 
+	pixels = neopixel.NeoPixel(board.D18, 30,brightness=.05)
+	pixels[0] = (255, 0, 0)
+	pixels.show()
 
 if __name__ == '__main__':
 	main()
