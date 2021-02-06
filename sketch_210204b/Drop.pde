@@ -65,7 +65,7 @@ class Drop {
   // Check if it hits the bottom
   boolean reachedBottom() {
     // If we go a little beyond the bottom
-    if (y > height + r*4) { 
+    if (y > height + r/2) { //adjusting from r*4 bc bigger r
       return true;
     } else {
       return false;

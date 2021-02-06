@@ -10,7 +10,8 @@ Drop[] drops = new Drop[size];
 //int totalDrops;
 
 void setup() {
-  size(1440, 810);
+  //size(1440, 810);
+  fullScreen();
   
   //initialize drops
   //for(int d = 0; d < drops.length; d++) {

@@ -1,50 +1,108 @@
-# python
+	# python
 
 import urllib
 import urllib.parse
 import urllib.request
 import json
 
-# url = "http://api.giphy.com/v1/gifs/search"
-url = "https://api.giphy.com/v1/gifs/random?"
-
-# params = urllib.parse.urlencode({
-#     "q": "ryan gosling",
-#     "api_key": "YOUR_API_KEY",
-#     "limit": "5"
-# })
-
-# random request
-# https://api.giphy.com/v1/gifs/random?api_key=1WzVd7NaYaqYzWqA4d6SgDBhcUa7QflA&tag=&rating=g
-
-# search request for 'gosling'
-# https://api.giphy.com/v1/gifs/search?api_key=1WzVd7NaYaqYzWqA4d6SgDBhcUa7QflA&q=gosling&limit=25&offset=0&rating=g&lang=en
-
-params = urllib.parse.urlencode({
-    "api_key": "1WzVd7NaYaqYzWqA4d6SgDBhcUa7QflA",
-    "tag": "",
-    "rating": "g"
-})
-
+key = "1WzVd7NaYaqYzWqA4d6SgDBhcUa7QflA"
 base = "giph"
 ending = ".gif"
 
-# print("".join((url, params)))
+def search(schString, limit):
+	url = "http://api.giphy.com/v1/gifs/search?"
 
-# with urllib.request.urlopen(url.join(params)) as response:
-#     data = json.loads(response.read())
-# print(json.dumps(data, sort_keys=True, indent=4))
+	params = urllib.parse.urlencode({
+	    "q": schString,
+	    "api_key": key,
+	    "limit": str(limit)
+	})
 
-for i in range(10):
 	with urllib.request.urlopen("".join((url, params))) as response:
-	    data = json.loads(response.read())
+		data = json.loads(response.read())
 
-	newurl = data["data"]["images"]["fixed_height_downsampled"]["url"]
+	for i in range(limit):
+		newurl = data["data"][i]["images"]["fixed_height_downsampled"]["url"]
 
-	with urllib.request.urlopen(newurl) as response:
-		theGif = response.read()
+		with urllib.request.urlopen(newurl) as response:
+			theGif = response.read()
 
-	f = base + str(i) + ending
-	fileWriter = open(f,'wb')
-	fileWriter.write(theGif)
-	fileWriter.close()
+		f = base + str(i) + ending
+		fileWriter = open(f,'wb')
+		fileWriter.write(theGif)
+		fileWriter.close()
+
+	# print(json.dumps(data, sort_keys=True, indent=4))
+	# print("".join((url, params)))
+	# search request for 'gosling'
+	# https://api.giphy.com/v1/gifs/search?api_key=1WzVd7NaYaqYzWqA4d6SgDBhcUa7QflA&q=gosling&limit=25&offset=0&rating=g&lang=en
+
+def trending(limit):
+	url = "https://api.giphy.com/v1/gifs/trending?"
+
+	params = urllib.parse.urlencode({
+	    "api_key": key,
+	    "limit": str(limit),
+	    "rating": "g"
+	})
+
+	with urllib.request.urlopen("".join((url, params))) as response:
+		data = json.loads(response.read())
+
+	for i in range(limit):
+		newurl = data["data"][i]["images"]["fixed_height_downsampled"]["url"]
+
+		with urllib.request.urlopen(newurl) as response:
+			theGif = response.read()
+
+		f = base + str(i) + ending
+
+		# print("Saving gif #",i,"\n") # for testing
+
+		fileWriter = open(f,'wb')
+		fileWriter.write(theGif)
+		fileWriter.close()
+
+	# example request:
+	# https://api.giphy.com/v1/gifs/trending?api_key=1WzVd7NaYaqYzWqA4d6SgDBhcUa7QflA&limit=25&rating=g
+
+def random(limit):
+	url = "https://api.giphy.com/v1/gifs/random?"
+
+	# random request
+	# https://api.giphy.com/v1/gifs/random?api_key=1WzVd7NaYaqYzWqA4d6SgDBhcUa7QflA&tag=&rating=g
+
+	params = urllib.parse.urlencode({
+	    "api_key": key,
+	    "tag": "",
+	    "rating": "g"
+	})
+
+	for i in range(limit):
+		with urllib.request.urlopen("".join((url, params))) as response:
+		    data = json.loads(response.read())
+
+		newurl = data["data"]["images"]["fixed_height_downsampled"]["url"]
+
+		with urllib.request.urlopen(newurl) as response:
+			theGif = response.read()
+
+		f = base + str(i) + ending
+
+		# print("Saving gif #",i,"\n") # for testing
+
+		fileWriter = open(f,'wb')
+		fileWriter.write(theGif)
+		fileWriter.close()
+
+def main():
+	searchString = "happy"
+	limit = 10
+
+	# search(searchString, limit)
+	# trending(limit)
+	random(limit)
+
+
+if __name__ == '__main__':
+	main()
