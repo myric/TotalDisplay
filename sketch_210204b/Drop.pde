@@ -50,6 +50,7 @@ class Drop {
     c = color(255, 255, 255); // Color
     
     base = "../giph";
+    // base = "/home/pi/Activities/TotalDisplay/giph";
     ending = ".gif";
     giphy = new Gif(parent, base+pic+ending);
     giphy.play();
