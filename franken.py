@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 
-# Thanks you to Giphy sample code and API explorer for this:
+# Thank you to Giphy sample code and API explorer for the basics.
 # https://developers.giphy.com/docs/resource/
 # https://developers.giphy.com/explorer
 
@@ -63,9 +63,9 @@ def trending(prefix, limit):
 
 		f = prefix + base + str(i) + ending
 
-		# print("Saving gif #",i,"\n") # for testing
+		print("Saving gif #",i,"\n") # for testing
 
-		fileWriter = open(f,'w')
+		fileWriter = open(f,'wb')
 		fileWriter.write(theGif)
 		fileWriter.close()
 
@@ -95,7 +95,7 @@ def random(prefix, limit):
 
 		f = prefix + base + str(i) + ending
 
-		# print("Saving gif #",i,"\n") # for testing
+		print("Saving gif #",i,"\n") # for testing
 
 		fileWriter = open(f,'wb')
 		fileWriter.write(theGif)
@@ -107,14 +107,14 @@ def main():
 
 	if os.getcwd() == '/':
 		fileTop = "/home/pi/Activities/TotalDisplay/"
+		time.sleep(20)
 	else:
 		fileTop = ""
 
-	time.sleep(60)
 
 	# search(fileTop, searchString, limit)
-	trending(fileTop, limit)
-	#random(fileTop, limit)
+	# trending(fileTop, limit)
+	random(fileTop, limit)
 
 
 if __name__ == '__main__':
