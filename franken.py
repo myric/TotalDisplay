@@ -4,6 +4,7 @@ import urllib
 import urllib.parse
 import urllib.request
 import json
+import time
 
 key = "1WzVd7NaYaqYzWqA4d6SgDBhcUa7QflA"
 base = "giph"
@@ -98,6 +99,8 @@ def random(limit):
 def main():
 	searchString = "happy"
 	limit = 10
+
+	time.sleep(30)
 
 	# search(searchString, limit)
 	# trending(limit)
