@@ -75,7 +75,7 @@ class Drop {
   void reset() {
     x = random(width);
     y = -r;
-    speed = random(1, 5);
+    speed = random(2, 7);
   }
 
   // Display the raindrop
