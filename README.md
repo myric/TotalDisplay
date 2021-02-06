@@ -1,6 +1,6 @@
 # TotalDisplay
 
-This extraordinarly simple display will animate a cascade of animated gifs - a random selection from Giphy - down the screen. Unless it runs out of memory.
+This extraordinarily simple display will animate a cascade of animated gifs - a random selection from Giphy - down the screen. Unless it runs out of memory.
 
 ## How It Works
 
