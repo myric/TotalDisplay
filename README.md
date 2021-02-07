@@ -8,7 +8,7 @@ At boot, the python script will run, sending a few quick API requests (some requ
 
 ## What It Shows Us
 
-In a similar vein to Know Your Meme, Giphy is a compendium of modern culture's obessive, recursive curation and recuration of its own media creations. TotalDisplay is a hidden mirror on high street (as it turns out they call 'main street' here). The same gifs we browse through as we contemplate responding to the group chat remain with us, and the mirror reminds us of that.
+In a similar vein to Know Your Meme, Giphy is a compendium of modern culture's obessive, recursive curation and recuration of its own media creations. Through their API, they offer random access to their database of gifs and still images in a variety of formats. Platforms like WhatsApp, Slack, and Discord (which uses a similar service) offer these gifs to their users as a directly emotive language of expression.  TotalDisplay is a hidden mirror on high street (as it turns out they call 'main street' here). The same gifs we browse through as we contemplate responding to the group chat remain with us, and the mirror reminds us of that.
 
 ## How It Works
 The primary code included in this repo consists of sketch\_210204b, franken.py, and berry.py. Franken and berry run boot from rc.local, and respectively control the API calls to Giphy and the LED device. rc.local from /etc has been edited to run them both in forked processes.
