@@ -1,8 +1,8 @@
 // Example 10-7: Drops one at a time
 
 // An array of drops
-static int size = 40;
-static int numpics = 10;
+static int size = 50;
+static int numpics = 25;
 
 Drop[] drops = new Drop[size];
 

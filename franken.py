@@ -11,11 +11,10 @@ import json
 import time
 import os
 
-key = "1WzVd7NaYaqYzWqA4d6SgDBhcUa7QflA"
 base = "giph"
 ending = ".gif"
 
-def search(prefix, schString, limit):
+def search(prefix, schString, limit, key):
 	url = "http://api.giphy.com/v1/gifs/search?"
 
 	params = urllib.parse.urlencode({
@@ -41,9 +40,9 @@ def search(prefix, schString, limit):
 	# print(json.dumps(data, sort_keys=True, indent=4))
 	# print("".join((url, params)))
 	# search request for 'gosling'
-	# https://api.giphy.com/v1/gifs/search?api_key=1WzVd7NaYaqYzWqA4d6SgDBhcUa7QflA&q=gosling&limit=25&offset=0&rating=g&lang=en
+	# https://api.giphy.com/v1/gifs/search?api_key=API_KEY_TEXT&q=gosling&limit=25&offset=0&rating=g&lang=en
 
-def trending(prefix, limit):
+def trending(prefix, limit, key):
 	url = "https://api.giphy.com/v1/gifs/trending?"
 
 	params = urllib.parse.urlencode({
@@ -70,13 +69,13 @@ def trending(prefix, limit):
 		fileWriter.close()
 
 	# example request:
-	# https://api.giphy.com/v1/gifs/trending?api_key=1WzVd7NaYaqYzWqA4d6SgDBhcUa7QflA&limit=25&rating=g
+	# https://api.giphy.com/v1/gifs/trending?api_key=API_KEY_TEXT&limit=25&rating=g
 
-def random(prefix, limit):
+def random(prefix, limit, key):
 	url = "https://api.giphy.com/v1/gifs/random?"
 
 	# random request
-	# https://api.giphy.com/v1/gifs/random?api_key=1WzVd7NaYaqYzWqA4d6SgDBhcUa7QflA&tag=&rating=g
+	# https://api.giphy.com/v1/gifs/random?api_key=API_KEY_TEXT&tag=&rating=g
 
 	params = urllib.parse.urlencode({
 	    "api_key": key,
@@ -101,9 +100,24 @@ def random(prefix, limit):
 		fileWriter.write(theGif)
 		fileWriter.close()
 
+def getKey():
+	fName = "key.txt"
+
+	try:
+		with open(fName, 'r') as file:
+			key = file.read()
+			file.close()
+
+	except IOError:
+		print("Could not load API key from ", fName)
+
+	return key
+
 def main():
 	searchString = "happy"
 	limit = 10
+
+	key = getKey();
 
 	if os.getcwd() == '/':
 		fileTop = "/home/pi/Activities/TotalDisplay/"
@@ -112,9 +126,9 @@ def main():
 		fileTop = ""
 
 
-	# search(fileTop, searchString, limit)
-	# trending(fileTop, limit)
-	random(fileTop, limit)
+	# search(fileTop, searchString, limit, key)
+	# trending(fileTop, limit, key)
+	random(fileTop, limit, key)
 
 
 if __name__ == '__main__':
